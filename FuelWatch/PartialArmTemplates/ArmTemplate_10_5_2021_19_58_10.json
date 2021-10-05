@@ -1,0 +1,394 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "FuelWatch"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/CopyPipeline_8pt')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy_8pt",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [
+							{
+								"name": "Destination",
+								"value": "datalakestore/RAW/FuelWatch/feed"
+							}
+						],
+						"typeProperties": {
+							"source": {
+								"type": "XmlSource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET"
+								},
+								"formatSettings": {
+									"type": "XmlReadSettings",
+									"validationMode": "none"
+								}
+							},
+							"sink": {
+								"type": "ParquetSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings",
+									"copyBehavior": "FlattenHierarchy"
+								},
+								"formatSettings": {
+									"type": "ParquetWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['rss']['channel']['title']"
+										},
+										"sink": {
+											"name": "rss_channel_title",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['ttl']"
+										},
+										"sink": {
+											"name": "ttl",
+											"type": "Int64"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['link']"
+										},
+										"sink": {
+											"name": "rss_channel_link",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['description']"
+										},
+										"sink": {
+											"name": "rss_channel_description",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['language']"
+										},
+										"sink": {
+											"name": "language",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['copyright']"
+										},
+										"sink": {
+											"name": "copyright",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['lastBuildDate']"
+										},
+										"sink": {
+											"name": "lastBuildDate",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['image']['url']"
+										},
+										"sink": {
+											"name": "url",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['image']['title']"
+										},
+										"sink": {
+											"name": "rss_channel_image_title",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['image']['link']"
+										},
+										"sink": {
+											"name": "rss_channel_image_link",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['item'][0]['title']"
+										},
+										"sink": {
+											"name": "rss_channel_item'][0]['title",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['item'][0]['description']"
+										},
+										"sink": {
+											"name": "rss_channel_item'][0]['description",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['item'][0]['brand']"
+										},
+										"sink": {
+											"name": "brand",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['item'][0]['date']"
+										},
+										"sink": {
+											"name": "date",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['item'][0]['price']"
+										},
+										"sink": {
+											"name": "price",
+											"type": "Double"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['item'][0]['trading-name']"
+										},
+										"sink": {
+											"name": "trading-name",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['item'][0]['location']"
+										},
+										"sink": {
+											"name": "location",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['item'][0]['address']"
+										},
+										"sink": {
+											"name": "address",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['item'][0]['phone']"
+										},
+										"sink": {
+											"name": "phone",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['item'][0]['latitude']"
+										},
+										"sink": {
+											"name": "latitude",
+											"type": "Double"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['item'][0]['longitude']"
+										},
+										"sink": {
+											"name": "longitude",
+											"type": "Double"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['channel']['item'][0]['site-features']"
+										},
+										"sink": {
+											"name": "site-features",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"path": "$['rss']['@version']"
+										},
+										"sink": {
+											"name": "@@version",
+											"type": "Double"
+										}
+									}
+								]
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "SourceDataset_8pt",
+								"type": "DatasetReference"
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DestinationDataset_8pt",
+								"type": "DatasetReference"
+							}
+						]
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/SourceDataset_8pt')]",
+				"[concat(variables('factoryId'), '/datasets/DestinationDataset_8pt')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_8pt')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "feed",
+						"folderPath": "RAW/FuelWatch",
+						"fileSystem": "datalakestore"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SourceDataset_8pt')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "fuelwatch",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Xml",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/fuelwatch')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStorage1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "https://datalakestored.dfs.core.windows.net",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "**********"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/FuelWatchKey')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "https://TelstraPurpleKey.vault.azure.net/"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/fuelwatch')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "fuelwatch",
+				"annotations": [],
+				"type": "HttpServer",
+				"typeProperties": {
+					"url": "https://www.fuelwatch.wa.gov.au/fuelwatch/fuelWatchRSS",
+					"enableServerCertificateValidation": false,
+					"authenticationType": "Basic",
+					"userName": "mainuser",
+					"password": {
+						"type": "SecureString",
+						"value": "**********"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
