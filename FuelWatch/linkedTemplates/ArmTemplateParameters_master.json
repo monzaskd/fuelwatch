@@ -8,10 +8,10 @@
 		"AzureDataLakeStorage1_accountKey": {
 			"value": ""
 		},
-		"fuelwatch_password": {
+		"AzureSqlDatabase1_connectionString": {
 			"value": ""
 		},
-		"AzureSqlDatabase1_connectionString": {
+		"fuelwatch_password": {
 			"value": ""
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
