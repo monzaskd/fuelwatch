@@ -1,0 +1,116 @@
+{
+	"name": "AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "rss_channel_title",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ttl",
+				"type": "nvarchar"
+			},
+			{
+				"name": "rss_channel_link",
+				"type": "nvarchar"
+			},
+			{
+				"name": "rss_channel_description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "language",
+				"type": "nvarchar"
+			},
+			{
+				"name": "copyright",
+				"type": "nvarchar"
+			},
+			{
+				"name": "lastBuildDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "url",
+				"type": "nvarchar"
+			},
+			{
+				"name": "rss_channel_image_title",
+				"type": "nvarchar"
+			},
+			{
+				"name": "rss_channel_image_link",
+				"type": "nvarchar"
+			},
+			{
+				"name": "title",
+				"type": "nvarchar"
+			},
+			{
+				"name": "description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "brand",
+				"type": "nvarchar"
+			},
+			{
+				"name": "date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "price",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "trading_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "location",
+				"type": "nvarchar"
+			},
+			{
+				"name": "address",
+				"type": "nvarchar"
+			},
+			{
+				"name": "phone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "latitude",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "longitude",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "site_features",
+				"type": "nvarchar"
+			},
+			{
+				"name": "version",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "fuelwatch"
+		}
+	}
+}

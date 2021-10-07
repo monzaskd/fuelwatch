@@ -296,11 +296,305 @@
 							"enablePartitionDiscovery": false
 						}
 					},
-					"enableStaging": false
+					"sink": {
+						"type": "AzureSqlSink",
+						"sqlWriterStoredProcedureName": "[dbo].[FuelWatchSave]",
+						"storedProcedureParameters": {
+							"address": {
+								"type": "String"
+							},
+							"brand": {
+								"type": "String"
+							},
+							"copyright": {
+								"type": "String"
+							},
+							"date": {
+								"type": "DateTime"
+							},
+							"description": {
+								"type": "String"
+							},
+							"language": {
+								"type": "String"
+							},
+							"lastBuildDate": {
+								"type": "DateTime"
+							},
+							"latitude": {
+								"type": "Double"
+							},
+							"location": {
+								"type": "String"
+							},
+							"longitude": {
+								"type": "Double"
+							},
+							"phone": {
+								"type": "String"
+							},
+							"price": {
+								"type": "Double"
+							},
+							"rss_channel_description": {
+								"type": "String"
+							},
+							"rss_channel_image_link": {
+								"type": "String"
+							},
+							"rss_channel_image_title": {
+								"type": "String"
+							},
+							"rss_channel_link": {
+								"type": "String"
+							},
+							"rss_channel_title": {
+								"type": "String"
+							},
+							"site_features": {
+								"type": "String"
+							},
+							"title": {
+								"type": "String"
+							},
+							"trading_name": {
+								"type": "String"
+							},
+							"ttl": {
+								"type": "String"
+							},
+							"url": {
+								"type": "String"
+							},
+							"version": {
+								"type": "String"
+							}
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "rss_channel_title",
+									"type": "String"
+								},
+								"sink": {
+									"name": "rss_channel_title"
+								}
+							},
+							{
+								"source": {
+									"name": "ttl",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "ttl"
+								}
+							},
+							{
+								"source": {
+									"name": "rss_channel_link",
+									"type": "String"
+								},
+								"sink": {
+									"name": "rss_channel_link"
+								}
+							},
+							{
+								"source": {
+									"name": "rss_channel_description",
+									"type": "String"
+								},
+								"sink": {
+									"name": "rss_channel_description"
+								}
+							},
+							{
+								"source": {
+									"name": "language",
+									"type": "String"
+								},
+								"sink": {
+									"name": "language"
+								}
+							},
+							{
+								"source": {
+									"name": "copyright",
+									"type": "String"
+								},
+								"sink": {
+									"name": "copyright"
+								}
+							},
+							{
+								"source": {
+									"name": "lastBuildDate",
+									"type": "String"
+								},
+								"sink": {
+									"name": "lastBuildDate"
+								}
+							},
+							{
+								"source": {
+									"name": "url",
+									"type": "String"
+								},
+								"sink": {
+									"name": "url"
+								}
+							},
+							{
+								"source": {
+									"name": "rss_channel_image_title",
+									"type": "String"
+								},
+								"sink": {
+									"name": "rss_channel_image_title"
+								}
+							},
+							{
+								"source": {
+									"name": "rss_channel_image_link",
+									"type": "String"
+								},
+								"sink": {
+									"name": "rss_channel_image_link"
+								}
+							},
+							{
+								"source": {
+									"name": "rss_channel_item'][0]['title",
+									"type": "String"
+								},
+								"sink": {
+									"name": "title"
+								}
+							},
+							{
+								"source": {
+									"name": "rss_channel_item'][0]['description",
+									"type": "String"
+								},
+								"sink": {
+									"name": "description"
+								}
+							},
+							{
+								"source": {
+									"name": "brand",
+									"type": "String"
+								},
+								"sink": {
+									"name": "brand"
+								}
+							},
+							{
+								"source": {
+									"name": "date",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "date"
+								}
+							},
+							{
+								"source": {
+									"name": "price",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "price"
+								}
+							},
+							{
+								"source": {
+									"name": "trading-name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "trading_name"
+								}
+							},
+							{
+								"source": {
+									"name": "location",
+									"type": "String"
+								},
+								"sink": {
+									"name": "location"
+								}
+							},
+							{
+								"source": {
+									"name": "address",
+									"type": "String"
+								},
+								"sink": {
+									"name": "address"
+								}
+							},
+							{
+								"source": {
+									"name": "phone",
+									"type": "String"
+								},
+								"sink": {
+									"name": "phone"
+								}
+							},
+							{
+								"source": {
+									"name": "latitude",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "latitude"
+								}
+							},
+							{
+								"source": {
+									"name": "longitude",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "longitude"
+								}
+							},
+							{
+								"source": {
+									"name": "site-features",
+									"type": "String"
+								},
+								"sink": {
+									"name": "site_features"
+								}
+							},
+							{
+								"source": {
+									"name": "@version",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "version"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
 						"referenceName": "DestinationDataset_8pt",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlTable1",
 						"type": "DatasetReference"
 					}
 				]
