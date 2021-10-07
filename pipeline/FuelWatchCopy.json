@@ -387,7 +387,7 @@
 							},
 							{
 								"source": {
-									"name": "rss_channel_image_title",
+									"name": "rss_channel_item'][0]['title",
 									"type": "String"
 								},
 								"sink": {
