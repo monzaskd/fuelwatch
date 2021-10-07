@@ -5,7 +5,7 @@
 		"factoryName": {
 			"type": "string",
 			"metadata": "Data Factory name",
-			"defaultValue": "FuelWatch"
+			"defaultValue": "fuelwatch"
 		},
 		"AzureDataLakeStorage1_accountKey": {
 			"type": "secureString",
@@ -14,6 +14,10 @@
 		"fuelwatch_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'fuelwatch'"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
@@ -63,6 +67,9 @@
 					},
 					"fuelwatch_password": {
 						"value": "[parameters('fuelwatch_password')]"
+					},
+					"AzureSqlDatabase1_connectionString": {
+						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
 					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"

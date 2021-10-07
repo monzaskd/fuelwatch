@@ -3,12 +3,15 @@
 	"contentVersion": "1.0.0.0",
 	"parameters": {
 		"factoryName": {
-			"value": "FuelWatch"
+			"value": "fuelwatch"
 		},
 		"AzureDataLakeStorage1_accountKey": {
 			"value": ""
 		},
 		"fuelwatch_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_connectionString": {
 			"value": ""
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {

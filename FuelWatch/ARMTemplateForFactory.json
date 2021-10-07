@@ -5,7 +5,7 @@
 		"factoryName": {
 			"type": "string",
 			"metadata": "Data Factory name",
-			"defaultValue": "FuelWatch"
+			"defaultValue": "fuelwatch"
 		},
 		"AzureDataLakeStorage1_accountKey": {
 			"type": "secureString",
@@ -14,6 +14,10 @@
 		"fuelwatch_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'fuelwatch'"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
@@ -37,7 +41,7 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/CopyPipeline_8pt')]",
+			"name": "[concat(parameters('factoryName'), '/FuelWatchCopy')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -309,6 +313,341 @@
 								"parameters": {}
 							}
 						]
+					},
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Copy_8pt",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "ParquetSource",
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"sqlWriterStoredProcedureName": "[[dbo].[FuelWatchSave]",
+								"sqlWriterTableType": "FuelWatch",
+								"storedProcedureTableTypeParameterName": "fuelwatch",
+								"storedProcedureParameters": {
+									"address": {
+										"type": "String"
+									},
+									"brand": {
+										"type": "String"
+									},
+									"copyright": {
+										"type": "String"
+									},
+									"date": {
+										"type": "DateTime"
+									},
+									"description": {
+										"type": "String"
+									},
+									"language": {
+										"type": "String"
+									},
+									"lastBuildDate": {
+										"type": "DateTime"
+									},
+									"latitude": {
+										"type": "Double"
+									},
+									"location": {
+										"type": "String"
+									},
+									"longitude": {
+										"type": "Double"
+									},
+									"phone": {
+										"type": "String"
+									},
+									"price": {
+										"type": "Double"
+									},
+									"rss_channel_description": {
+										"type": "String"
+									},
+									"rss_channel_image_link": {
+										"type": "String"
+									},
+									"rss_channel_image_title": {
+										"type": "String"
+									},
+									"rss_channel_link": {
+										"type": "String"
+									},
+									"rss_channel_title": {
+										"type": "String"
+									},
+									"site_features": {
+										"type": "String"
+									},
+									"title": {
+										"type": "String"
+									},
+									"trading_name": {
+										"type": "String"
+									},
+									"ttl": {
+										"type": "String"
+									},
+									"url": {
+										"type": "String"
+									},
+									"version": {
+										"type": "String"
+									}
+								},
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "rss_channel_title",
+											"type": "String"
+										},
+										"sink": {
+											"name": "rss_channel_title"
+										}
+									},
+									{
+										"source": {
+											"name": "ttl",
+											"type": "Int64"
+										},
+										"sink": {
+											"name": "ttl"
+										}
+									},
+									{
+										"source": {
+											"name": "rss_channel_link",
+											"type": "String"
+										},
+										"sink": {
+											"name": "rss_channel_link"
+										}
+									},
+									{
+										"source": {
+											"name": "rss_channel_description",
+											"type": "String"
+										},
+										"sink": {
+											"name": "rss_channel_description"
+										}
+									},
+									{
+										"source": {
+											"name": "language",
+											"type": "String"
+										},
+										"sink": {
+											"name": "language"
+										}
+									},
+									{
+										"source": {
+											"name": "copyright",
+											"type": "String"
+										},
+										"sink": {
+											"name": "copyright"
+										}
+									},
+									{
+										"source": {
+											"name": "lastBuildDate",
+											"type": "String"
+										},
+										"sink": {
+											"name": "lastBuildDate"
+										}
+									},
+									{
+										"source": {
+											"name": "url",
+											"type": "String"
+										},
+										"sink": {
+											"name": "url"
+										}
+									},
+									{
+										"source": {
+											"name": "rss_channel_image_title",
+											"type": "String"
+										},
+										"sink": {
+											"name": "rss_channel_image_title"
+										}
+									},
+									{
+										"source": {
+											"name": "rss_channel_image_link",
+											"type": "String"
+										},
+										"sink": {
+											"name": "rss_channel_image_link"
+										}
+									},
+									{
+										"source": {
+											"name": "rss_channel_item'][0]['title",
+											"type": "String"
+										},
+										"sink": {
+											"name": "title"
+										}
+									},
+									{
+										"source": {
+											"name": "rss_channel_item'][0]['description",
+											"type": "String"
+										},
+										"sink": {
+											"name": "description"
+										}
+									},
+									{
+										"source": {
+											"name": "brand",
+											"type": "String"
+										},
+										"sink": {
+											"name": "brand"
+										}
+									},
+									{
+										"source": {
+											"name": "date",
+											"type": "DateTime"
+										},
+										"sink": {
+											"name": "date"
+										}
+									},
+									{
+										"source": {
+											"name": "price",
+											"type": "Double"
+										},
+										"sink": {
+											"name": "price"
+										}
+									},
+									{
+										"source": {
+											"name": "trading-name",
+											"type": "String"
+										},
+										"sink": {
+											"name": "trading_name"
+										}
+									},
+									{
+										"source": {
+											"name": "location",
+											"type": "String"
+										},
+										"sink": {
+											"name": "location"
+										}
+									},
+									{
+										"source": {
+											"name": "address",
+											"type": "String"
+										},
+										"sink": {
+											"name": "address"
+										}
+									},
+									{
+										"source": {
+											"name": "phone",
+											"type": "String"
+										},
+										"sink": {
+											"name": "phone"
+										}
+									},
+									{
+										"source": {
+											"name": "latitude",
+											"type": "Double"
+										},
+										"sink": {
+											"name": "latitude"
+										}
+									},
+									{
+										"source": {
+											"name": "longitude",
+											"type": "Double"
+										},
+										"sink": {
+											"name": "longitude"
+										}
+									},
+									{
+										"source": {
+											"name": "site-features",
+											"type": "String"
+										},
+										"sink": {
+											"name": "site_features"
+										}
+									},
+									{
+										"source": {
+											"name": "@version",
+											"type": "Double"
+										},
+										"sink": {
+											"name": "version"
+										}
+									}
+								]
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "DestinationDataset_8pt",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureSqlTable1",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
 					}
 				],
 				"policy": {
@@ -319,7 +658,8 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/SourceDataset_8pt')]",
-				"[concat(variables('factoryId'), '/datasets/DestinationDataset_8pt')]"
+				"[concat(variables('factoryId'), '/datasets/DestinationDataset_8pt')]",
+				"[concat(variables('factoryId'), '/datasets/AzureSqlTable1')]"
 			]
 		},
 		{
@@ -419,6 +759,140 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabase1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureSqlDatabase1_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlTable1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "rss_channel_title",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ttl",
+						"type": "nvarchar"
+					},
+					{
+						"name": "rss_channel_link",
+						"type": "nvarchar"
+					},
+					{
+						"name": "rss_channel_description",
+						"type": "nvarchar"
+					},
+					{
+						"name": "language",
+						"type": "nvarchar"
+					},
+					{
+						"name": "copyright",
+						"type": "nvarchar"
+					},
+					{
+						"name": "lastBuildDate",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "url",
+						"type": "nvarchar"
+					},
+					{
+						"name": "rss_channel_image_title",
+						"type": "nvarchar"
+					},
+					{
+						"name": "rss_channel_image_link",
+						"type": "nvarchar"
+					},
+					{
+						"name": "title",
+						"type": "nvarchar"
+					},
+					{
+						"name": "description",
+						"type": "nvarchar"
+					},
+					{
+						"name": "brand",
+						"type": "nvarchar"
+					},
+					{
+						"name": "date",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "price",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "trading_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "location",
+						"type": "nvarchar"
+					},
+					{
+						"name": "address",
+						"type": "nvarchar"
+					},
+					{
+						"name": "phone",
+						"type": "nvarchar"
+					},
+					{
+						"name": "latitude",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "longitude",
+						"type": "float",
+						"precision": 15
+					},
+					{
+						"name": "site_features",
+						"type": "nvarchar"
+					},
+					{
+						"name": "version",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "fuelwatch"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
+			]
 		}
 	]
 }
