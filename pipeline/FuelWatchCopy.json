@@ -367,31 +367,11 @@
 							},
 							{
 								"source": {
-									"name": "lastBuildDate",
-									"type": "String"
-								},
-								"sink": {
-									"name": "lastBuildDate",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
 									"name": "url",
 									"type": "String"
 								},
 								"sink": {
 									"name": "url",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "rss_channel_image_title",
-									"type": "String"
-								},
-								"sink": {
-									"name": "rss_channel_image_title",
 									"type": "String"
 								}
 							},
@@ -433,16 +413,6 @@
 								"sink": {
 									"name": "brand",
 									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "date",
-									"type": "DateTime"
-								},
-								"sink": {
-									"name": "date",
-									"type": "DateTime"
 								}
 							},
 							{
