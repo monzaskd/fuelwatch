@@ -286,7 +286,16 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "datalakestore/RAW/FuelWatch/feed"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.fuelwatch"
+					}
+				],
 				"typeProperties": {
 					"source": {
 						"type": "ParquetSource",
