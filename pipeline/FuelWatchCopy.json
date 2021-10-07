@@ -366,16 +366,6 @@
 							},
 							{
 								"source": {
-									"name": "lastBuildDate",
-									"type": "String"
-								},
-								"sink": {
-									"name": "lastBuildDate",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
 									"name": "url",
 									"type": "String"
 								},
@@ -432,16 +422,6 @@
 								"sink": {
 									"name": "brand",
 									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "date",
-									"type": "DateTime"
-								},
-								"sink": {
-									"name": "date",
-									"type": "DateTime"
 								}
 							},
 							{
