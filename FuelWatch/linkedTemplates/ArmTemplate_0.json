@@ -518,15 +518,6 @@
 											"name": "site-features",
 											"type": "String"
 										}
-									},
-									{
-										"source": {
-											"path": "$['rss']['@version']"
-										},
-										"sink": {
-											"name": "@@version",
-											"type": "Double"
-										}
 									}
 								]
 							}
@@ -654,9 +645,6 @@
 									},
 									"url": {
 										"type": "String"
-									},
-									"version": {
-										"type": "String"
 									}
 								},
 								"disableMetricsCollection": false
@@ -671,7 +659,8 @@
 											"type": "String"
 										},
 										"sink": {
-											"name": "rss_channel_title"
+											"name": "rss_channel_title",
+											"type": "String"
 										}
 									},
 									{
@@ -680,7 +669,8 @@
 											"type": "Int64"
 										},
 										"sink": {
-											"name": "ttl"
+											"name": "ttl",
+											"type": "String"
 										}
 									},
 									{
@@ -689,7 +679,8 @@
 											"type": "String"
 										},
 										"sink": {
-											"name": "rss_channel_link"
+											"name": "rss_channel_link",
+											"type": "String"
 										}
 									},
 									{
@@ -698,7 +689,8 @@
 											"type": "String"
 										},
 										"sink": {
-											"name": "rss_channel_description"
+											"name": "rss_channel_description",
+											"type": "String"
 										}
 									},
 									{
@@ -707,7 +699,8 @@
 											"type": "String"
 										},
 										"sink": {
-											"name": "language"
+											"name": "language",
+											"type": "String"
 										}
 									},
 									{
@@ -716,7 +709,8 @@
 											"type": "String"
 										},
 										"sink": {
-											"name": "copyright"
+											"name": "copyright",
+											"type": "String"
 										}
 									},
 									{
@@ -725,7 +719,8 @@
 											"type": "String"
 										},
 										"sink": {
-											"name": "lastBuildDate"
+											"name": "lastBuildDate",
+											"type": "DateTime"
 										}
 									},
 									{
@@ -734,7 +729,8 @@
 											"type": "String"
 										},
 										"sink": {
-											"name": "url"
+											"name": "url",
+											"type": "String"
 										}
 									},
 									{
@@ -743,7 +739,8 @@
 											"type": "String"
 										},
 										"sink": {
-											"name": "rss_channel_image_title"
+											"name": "rss_channel_image_title",
+											"type": "String"
 										}
 									},
 									{
@@ -752,7 +749,8 @@
 											"type": "String"
 										},
 										"sink": {
-											"name": "rss_channel_image_link"
+											"name": "rss_channel_image_link",
+											"type": "String"
 										}
 									},
 									{
@@ -761,7 +759,8 @@
 											"type": "String"
 										},
 										"sink": {
-											"name": "title"
+											"name": "title",
+											"type": "String"
 										}
 									},
 									{
@@ -770,7 +769,8 @@
 											"type": "String"
 										},
 										"sink": {
-											"name": "description"
+											"name": "description",
+											"type": "String"
 										}
 									},
 									{
@@ -779,7 +779,8 @@
 											"type": "String"
 										},
 										"sink": {
-											"name": "brand"
+											"name": "brand",
+											"type": "String"
 										}
 									},
 									{
@@ -788,7 +789,8 @@
 											"type": "DateTime"
 										},
 										"sink": {
-											"name": "date"
+											"name": "date",
+											"type": "DateTime"
 										}
 									},
 									{
@@ -797,7 +799,8 @@
 											"type": "Double"
 										},
 										"sink": {
-											"name": "price"
+											"name": "price",
+											"type": "Double"
 										}
 									},
 									{
@@ -806,7 +809,8 @@
 											"type": "String"
 										},
 										"sink": {
-											"name": "trading_name"
+											"name": "trading_name",
+											"type": "String"
 										}
 									},
 									{
@@ -815,7 +819,8 @@
 											"type": "String"
 										},
 										"sink": {
-											"name": "location"
+											"name": "location",
+											"type": "String"
 										}
 									},
 									{
@@ -824,7 +829,8 @@
 											"type": "String"
 										},
 										"sink": {
-											"name": "address"
+											"name": "address",
+											"type": "String"
 										}
 									},
 									{
@@ -833,7 +839,8 @@
 											"type": "String"
 										},
 										"sink": {
-											"name": "phone"
+											"name": "phone",
+											"type": "String"
 										}
 									},
 									{
@@ -842,7 +849,8 @@
 											"type": "Double"
 										},
 										"sink": {
-											"name": "latitude"
+											"name": "latitude",
+											"type": "Double"
 										}
 									},
 									{
@@ -851,7 +859,8 @@
 											"type": "Double"
 										},
 										"sink": {
-											"name": "longitude"
+											"name": "longitude",
+											"type": "Double"
 										}
 									},
 									{
@@ -860,16 +869,8 @@
 											"type": "String"
 										},
 										"sink": {
-											"name": "site_features"
-										}
-									},
-									{
-										"source": {
-											"name": "@version",
-											"type": "Double"
-										},
-										"sink": {
-											"name": "version"
+											"name": "site_features",
+											"type": "String"
 										}
 									}
 								]
