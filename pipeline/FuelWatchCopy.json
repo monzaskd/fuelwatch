@@ -137,7 +137,7 @@
 							},
 							{
 								"source": {
-									"path": "$['rss']['channel']['item'][0]['title']"
+									"path": "['title']"
 								},
 								"sink": {
 									"name": "rss_channel_item'][0]['title",
@@ -146,7 +146,7 @@
 							},
 							{
 								"source": {
-									"path": "$['rss']['channel']['item'][0]['description']"
+									"path": "['description']"
 								},
 								"sink": {
 									"name": "rss_channel_item'][0]['description",
@@ -155,7 +155,7 @@
 							},
 							{
 								"source": {
-									"path": "$['rss']['channel']['item'][0]['brand']"
+									"path": "['brand']"
 								},
 								"sink": {
 									"name": "brand",
@@ -164,7 +164,7 @@
 							},
 							{
 								"source": {
-									"path": "$['rss']['channel']['item'][0]['date']"
+									"path": "['date']"
 								},
 								"sink": {
 									"name": "date",
@@ -173,7 +173,7 @@
 							},
 							{
 								"source": {
-									"path": "$['rss']['channel']['item'][0]['price']"
+									"path": "['price']"
 								},
 								"sink": {
 									"name": "price",
@@ -182,7 +182,7 @@
 							},
 							{
 								"source": {
-									"path": "$['rss']['channel']['item'][0]['trading-name']"
+									"path": "['trading-name']"
 								},
 								"sink": {
 									"name": "trading-name",
@@ -191,7 +191,7 @@
 							},
 							{
 								"source": {
-									"path": "$['rss']['channel']['item'][0]['location']"
+									"path": "['location']"
 								},
 								"sink": {
 									"name": "location",
@@ -200,7 +200,7 @@
 							},
 							{
 								"source": {
-									"path": "$['rss']['channel']['item'][0]['address']"
+									"path": "['address']"
 								},
 								"sink": {
 									"name": "address",
@@ -209,7 +209,7 @@
 							},
 							{
 								"source": {
-									"path": "$['rss']['channel']['item'][0]['phone']"
+									"path": "['phone']"
 								},
 								"sink": {
 									"name": "phone",
@@ -218,7 +218,7 @@
 							},
 							{
 								"source": {
-									"path": "$['rss']['channel']['item'][0]['latitude']"
+									"path": "['latitude']"
 								},
 								"sink": {
 									"name": "latitude",
@@ -227,7 +227,7 @@
 							},
 							{
 								"source": {
-									"path": "$['rss']['channel']['item'][0]['longitude']"
+									"path": "['longitude']"
 								},
 								"sink": {
 									"name": "longitude",
@@ -236,14 +236,15 @@
 							},
 							{
 								"source": {
-									"path": "$['rss']['channel']['item'][0]['site-features']"
+									"path": "['site-features']"
 								},
 								"sink": {
 									"name": "site-features",
 									"type": "String"
 								}
 							}
-						]
+						],
+						"collectionReference": "$['rss']['channel']['item']"
 					}
 				},
 				"inputs": [
