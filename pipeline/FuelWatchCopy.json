@@ -242,15 +242,6 @@
 									"name": "site-features",
 									"type": "String"
 								}
-							},
-							{
-								"source": {
-									"path": "$['rss']['@version']"
-								},
-								"sink": {
-									"name": "@@version",
-									"type": "Double"
-								}
 							}
 						]
 					}
