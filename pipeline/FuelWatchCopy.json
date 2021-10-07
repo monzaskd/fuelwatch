@@ -299,6 +299,8 @@
 					"sink": {
 						"type": "AzureSqlSink",
 						"sqlWriterStoredProcedureName": "[dbo].[FuelWatchSave]",
+						"sqlWriterTableType": "FuelWatch",
+						"storedProcedureTableTypeParameterName": "fuelwatch",
 						"storedProcedureParameters": {
 							"address": {
 								"type": "String"
