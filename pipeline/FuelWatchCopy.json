@@ -298,78 +298,6 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"sqlWriterStoredProcedureName": "[dbo].[FuelWatchSave]",
-						"sqlWriterTableType": "FuelWatch",
-						"storedProcedureTableTypeParameterName": "dbofuelwatch",
-						"storedProcedureParameters": {
-							"addressinput": {
-								"type": "String"
-							},
-							"brand": {
-								"type": "String"
-							},
-							"copyright": {
-								"type": "String"
-							},
-							"date": {
-								"type": "DateTime"
-							},
-							"description": {
-								"type": "String"
-							},
-							"language": {
-								"type": "String"
-							},
-							"lastBuildDate": {
-								"type": "DateTime"
-							},
-							"latitude": {
-								"type": "Double"
-							},
-							"location": {
-								"type": "String"
-							},
-							"longitude": {
-								"type": "Double"
-							},
-							"phone": {
-								"type": "String"
-							},
-							"price": {
-								"type": "Double"
-							},
-							"rss_channel_description": {
-								"type": "String"
-							},
-							"rss_channel_image_link": {
-								"type": "String"
-							},
-							"rss_channel_image_title": {
-								"type": "String"
-							},
-							"rss_channel_link": {
-								"type": "String"
-							},
-							"rss_channel_title": {
-								"type": "String"
-							},
-							"site_features": {
-								"type": "String"
-							},
-							"title": {
-								"type": "String"
-							},
-							"trading_name": {
-								"type": "String"
-							},
-							"ttl": {
-								"type": "String"
-							},
-							"url": {
-								"type": "String"
-							}
-						},
-						"tableOption": "autoCreate",
 						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
@@ -382,7 +310,8 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "rss_channel_title"
+									"name": "rss_channel_title",
+									"type": "String"
 								}
 							},
 							{
@@ -391,7 +320,8 @@
 									"type": "Int64"
 								},
 								"sink": {
-									"name": "ttl"
+									"name": "ttl",
+									"type": "String"
 								}
 							},
 							{
@@ -400,7 +330,8 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "rss_channel_link"
+									"name": "rss_channel_link",
+									"type": "String"
 								}
 							},
 							{
@@ -409,7 +340,8 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "rss_channel_description"
+									"name": "rss_channel_description",
+									"type": "String"
 								}
 							},
 							{
@@ -418,7 +350,8 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "language"
+									"name": "language",
+									"type": "String"
 								}
 							},
 							{
@@ -427,7 +360,8 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "copyright"
+									"name": "copyright",
+									"type": "String"
 								}
 							},
 							{
@@ -436,7 +370,8 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "lastBuildDate"
+									"name": "lastBuildDate",
+									"type": "DateTime"
 								}
 							},
 							{
@@ -445,7 +380,8 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "url"
+									"name": "url",
+									"type": "String"
 								}
 							},
 							{
@@ -454,7 +390,8 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "rss_channel_image_title"
+									"name": "rss_channel_image_title",
+									"type": "String"
 								}
 							},
 							{
@@ -463,7 +400,8 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "rss_channel_image_link"
+									"name": "rss_channel_image_link",
+									"type": "String"
 								}
 							},
 							{
@@ -472,7 +410,8 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "title"
+									"name": "title",
+									"type": "String"
 								}
 							},
 							{
@@ -481,7 +420,8 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "description"
+									"name": "description",
+									"type": "String"
 								}
 							},
 							{
@@ -490,7 +430,8 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "brand"
+									"name": "brand",
+									"type": "String"
 								}
 							},
 							{
@@ -499,7 +440,8 @@
 									"type": "DateTime"
 								},
 								"sink": {
-									"name": "date"
+									"name": "date",
+									"type": "DateTime"
 								}
 							},
 							{
@@ -508,7 +450,8 @@
 									"type": "Double"
 								},
 								"sink": {
-									"name": "price"
+									"name": "price",
+									"type": "Double"
 								}
 							},
 							{
@@ -517,7 +460,8 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "trading_name"
+									"name": "trading_name",
+									"type": "String"
 								}
 							},
 							{
@@ -526,7 +470,8 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "location"
+									"name": "location",
+									"type": "String"
 								}
 							},
 							{
@@ -535,7 +480,8 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "address"
+									"name": "address",
+									"type": "String"
 								}
 							},
 							{
@@ -544,7 +490,8 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "phone"
+									"name": "phone",
+									"type": "String"
 								}
 							},
 							{
@@ -553,7 +500,8 @@
 									"type": "Double"
 								},
 								"sink": {
-									"name": "latitude"
+									"name": "latitude",
+									"type": "Double"
 								}
 							},
 							{
@@ -562,7 +510,8 @@
 									"type": "Double"
 								},
 								"sink": {
-									"name": "longitude"
+									"name": "longitude",
+									"type": "Double"
 								}
 							},
 							{
@@ -571,7 +520,8 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "site_features"
+									"name": "site_features",
+									"type": "String"
 								}
 							}
 						]
